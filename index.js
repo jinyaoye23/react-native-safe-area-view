@@ -21,6 +21,9 @@ const IPADPRO11_WIDTH = 834;
 const IPADPRO11_HEIGHT = 1194;
 const IPADPRO129_HEIGHT = 1024;
 const IPADPRO129_WIDTH = 1366;
+const IPHONE12_H = 844;
+const IPHONE12_MAX = 926;
+const IPHONE12_Mini = 780;
 
 const getResolvedDimensions = () => {
   const { width, height } = Dimensions.get('window');
@@ -41,7 +44,8 @@ const isIPhoneX = (() => {
       ((D_HEIGHT === X_HEIGHT && D_WIDTH === X_WIDTH) ||
         (D_HEIGHT === X_WIDTH && D_WIDTH === X_HEIGHT))) ||
     ((D_HEIGHT === XSMAX_HEIGHT && D_WIDTH === XSMAX_WIDTH) ||
-      (D_HEIGHT === XSMAX_WIDTH && D_WIDTH === XSMAX_HEIGHT))
+      (D_HEIGHT === XSMAX_WIDTH && D_WIDTH === XSMAX_HEIGHT) ||
+      (D_HEIGHT === IPHONE12_H || D_HEIGHT === IPHONE12_MAX || D_HEIGHT === IPHONE12_Mini))
   );
 })();
 
@@ -377,7 +381,7 @@ const SafeAreaView = withOrientation(SafeView);
 
 export default SafeAreaView;
 
-export const withSafeArea = function(forceInset = {}) {
+export const withSafeArea = function (forceInset = {}) {
   return WrappedComponent => {
     class withSafeArea extends Component {
       render() {
